@@ -45,6 +45,7 @@ go run .
 
 ## Supported Frameworks
 - Gin
+- Fiber
 
 ---
 
