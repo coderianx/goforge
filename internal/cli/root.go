@@ -5,6 +5,7 @@ import "github.com/AlecAivazis/survey/v2"
 func SelectFramework() (string, error) {
 	options := []string{
 		"Gin",
+		"Fiber",
 	}
 
 	var choice string
