@@ -13,4 +13,6 @@ func main() {
 	r.Get("/", Hello)
 	r.Get("/ping", Ping)
 
+	http.ListenAndServe(":8080", r)
+
 }
