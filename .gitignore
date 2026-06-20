@@ -1,0 +1,36 @@
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+goforge
+/tmp
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of go coverage
+*.out
+*.prof
+coverage.txt
+
+# Dependency directories
+vendor/
+node_modules/
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Environment files
+.env
+.env.local
+
+# Build artifacts
+/dist
+/releases

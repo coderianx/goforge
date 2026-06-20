@@ -14,7 +14,6 @@ func CopyDir(fsys fs.FS, srcDir, destDir string) error {
 			return err
 		}
 
-		// .tpl dosyalarını kopyalama
 		if !d.IsDir() && strings.HasSuffix(d.Name(), ".tpl") {
 			return nil
 		}
@@ -25,6 +24,7 @@ func CopyDir(fsys fs.FS, srcDir, destDir string) error {
 		}
 
 		targetPath := filepath.Join(destDir, relPath)
+		targetPath = strings.ReplaceAll(targetPath, ".gotmpl", ".go")
 
 		if d.IsDir() {
 			return os.MkdirAll(targetPath, 0755)

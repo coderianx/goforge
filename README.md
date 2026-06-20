@@ -1,54 +1,99 @@
 # GoForge
 
-Quickly bootstrap Go projects with your preferred framework.
-
----
+Quickly bootstrap Go API projects with your preferred web framework.
 
 ## Features
-- Fast project creation: `goforge new <project-name>`  
-- Framework selection: Gin and more...
-- Embed starter templates  
-- Automatic `go.mod` generation  
-- Single-binary installation via `go install` 
 
----
+- **6 framework templates**: Gin, Fiber, Chi, Echo, Gorilla/Mux, Standard Library
+- **Interactive TUI** framework selector via `charmbracelet/huh`
+- **Docker support**: Multi-stage Dockerfile + docker-compose.yml included
+- **Graceful shutdown**: Proper signal handling in all templates
+- **Database scaffolding**: PostgreSQL or SQLite support (optional)
+- **Professional structure**: Clean project layout with separated handlers
+- **Single binary**: Install via `go install`
 
 ## Installation
 
 ```bash
-# Install via Go
 go install github.com/coderianx/goforge/cmd/goforge@latest
 ```
 
-Make sure `$GOPATH/bin` or `$HOME/go/bin` is in your PATH
-
----
+Make sure `$GOPATH/bin` is in your PATH.
 
 ## Usage
 
-# Create a new project
 ```bash
+# Create a new project (interactive framework selection)
 goforge new my-app
+
+# List supported frameworks
+goforge list
+
+# Show version
+goforge --version
+
+# Create with database support
+goforge new my-app --db postgres
+goforge new my-app --db sqlite
 ```
 
-## Navigate into project
-```bash
-cd my-api
-```
+After creation:
 
-# Run the project
 ```bash
+cd my-app
+go mod tidy
 go run .
 ```
 
----
+## Docker
+
+```bash
+# Build and run with Docker Compose
+docker compose up --build
+```
 
 ## Supported Frameworks
-- Gin
-- Fiber
-- Chi
 
----
+| Framework | Port | Database Support |
+|-----------|------|-----------------|
+| Gin | 8080 | postgres, sqlite |
+| Fiber | 3000 | postgres, sqlite |
+| Chi | 8080 | postgres, sqlite |
+| Echo | 8080 | postgres, sqlite |
+| Gorilla/Mux | 8080 | postgres, sqlite |
+| Standard Library | 8080 | postgres, sqlite |
+
+## Development
+
+```bash
+# Build
+make build
+
+# Test
+make test
+
+# Lint (requires golangci-lint)
+make lint
+
+# Run
+make run
+```
+
+## Project Structure (scaffolded)
+
+```
+my-app/
+├── main.go              # Entry point with graceful shutdown
+├── go.mod
+├── hello.go             # Hello handler
+├── ping.go              # Ping/health handler
+├── Dockerfile           # Multi-stage Docker build
+├── docker-compose.yml   # Docker Compose config
+├── .env.example         # Environment variables
+└── database/            # (optional) Database support
+    └── postgres.go / sqlite.go
+```
 
 ## License
+
 [MIT](./LICENSE)
